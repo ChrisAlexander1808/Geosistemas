@@ -1,0 +1,103 @@
+<div class="d-flex flex-column flex-root">
+    <div class="d-flex flex-row flex-column-fluid page">
+        <app-sidebar></app-sidebar>
+        <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+            <app-top></app-top>
+            <!--begin::Content-->
+            <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+                <!--begin::Subheader-->
+                <div class="subheader py-2 py-lg-4 subheader-solid" id="kt_subheader">
+                    <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+                        <!--begin::Info-->
+                        <div class="d-flex align-items-center flex-wrap mr-2">
+                            <!--begin::Page Title-->
+                            <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Dashboard</h5>
+                            <!--end::Page Title-->
+                            <!--begin::Actions-->
+                            <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-4 bg-gray-200"></div>
+                            <span class="text-muted font-weight-bold mr-4">#XRS-45670</span>
+                            <a href="#" class="btn btn-light-warning font-weight-bolder btn-sm">Add New</a>
+                            <!--end::Actions-->
+                        </div>
+                        <!--end::Info-->
+                        
+                    </div>
+                </div>
+                <!--end::Subheader-->
+                <!--begin::Entry-->
+                <div class="d-flex flex-column-fluid">
+                    <!--begin::Container-->
+                    <div class="container">
+                        <div class="row p-1">  
+                            <div class="col-12 col-sm-6 col-xl-3 col-lg-3 col-md-3 p-3">
+                                <div class="col-12" style="background-color: #6993FF; border-radius:0.75em; border-collapse: separate; border-bottom-right-radius: 2.75em; height: 85px; padding-top: 1em;">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h2 class="text-center" style="color: white;">
+                                                {{total_ventas|currency:'Q'}}
+                                            </h2>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h5 class="text-center" style="color: white;">
+                                                Ingreso Anual
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                         
+                                     
+                            <div class="col-12 col-sm-6 col-xl-3 col-lg-3 col-md-3 p-3">
+                                <div class="col-12" style="background-color: #F9D407; border-radius:0.75em; border-collapse: separate; border-bottom-right-radius: 2.75em; height: 85px; padding-top: 1em;">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h2 class="text-center" style="color: white;">
+                                                {{total_ventas_credito|currency:'Q'}}
+                                            </h2>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h5 class="text-center" style="color: white;">
+                                                Ventas por Anticipo
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>  
+
+                            <div class="col-12 col-sm-6 col-xl-3 col-lg-3 col-md-3 p-3">
+                                <div class="col-12" style="background-color: #2DD3CB; border-radius:0.75em; border-collapse: separate; border-bottom-right-radius: 2.75em; height: 85px; padding-top: 1em;">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h2 class="text-center" style="color: white;">
+                                                {{total_ventas_contado|currency:'Q'}}
+                                            </h2>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h5 class="text-center" style="color: white;">
+                                                Ventas por Estimación
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>  
+                        </div>  
+                        <div class="card-body" id="content_chart_12">
+                            <!--begin::Chart-->
+                            <div id="chart_1" class="d-flex justify-content-center"></div>
+                            <!--end::Chart-->
+                        </div>                   
+                    </div>
+                    <!--end::Container-->
+                </div>
+                <!--end::Entry-->
+            </div>
+            <!--end::Content-->
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,248 @@
+<div class="d-flex flex-column flex-root">
+    <div class="d-flex flex-row flex-column-fluid page">
+        <app-sidebar></app-sidebar>
+        <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+            <app-top></app-top>
+            <!--begin::Content-->
+            <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+                <!--begin::Subheader-->
+                <div class="subheader py-2 py-lg-4 subheader-solid" id="kt_subheader">
+                    <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+                        <!--begin::Info-->
+                        <div class="d-flex align-items-center flex-wrap mr-2">
+                            <!--begin::Page Title-->
+                            <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Rendimiento</h5>
+                            <!--end::Page Title-->
+                            <!--begin::Actions-->
+                            <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-4 bg-gray-200"></div>
+                            <span class="text-muted font-weight-bold mr-4">#XRS-45670</span>
+                            <a href="#" class="btn btn-light-warning font-weight-bolder btn-sm">Add New</a>
+                            <!--end::Actions-->
+                        </div>
+                        <!--end::Info-->
+                        
+                    </div>
+                </div>
+                <!--end::Subheader-->
+                <div class="d-flex flex-column-fluid">
+                    <!--begin::Container-->
+                    <div class="container">
+                        <!--begin::Notice-->
+                       
+                        <!--end::Notice-->
+                        <!--begin::Card-->
+                        <div class="row">
+                            
+                            <!--  -->
+                            <div class="col-lg-6">
+                                <!--begin::Card-->
+                                <div class="card card-custom card-stretch gutter-b">
+                                    <div class="card-header">
+                                        <div class="card-title">
+                                            <h3 class="card-label">Rendimiento de Proyecto {{nombreproyecto}} </h3>
+                                        </div>
+                                    </div>
+                                    <div class="card-body" id="content_chart_12">
+                                        <!--begin::Chart-->
+                                        <div id="chart_12" class="d-flex justify-content-center"></div>
+                                        <!--end::Chart-->
+                                    </div>
+                                </div>
+                                <!--end::Card-->
+                            </div>
+            
+                            <div class="col-lg-6">
+                                <!--begin::Card-->
+                                <div class="card card-custom card-stretch gutter-b">
+                                    <div class="card-header">
+                                        <div class="card-title">
+                                            <h3 class="card-label">Estadísticas de Compras por Categoría</h3>
+                                        </div>
+                                    </div>
+                                    <div class="card-body" id="content_chart_1">
+                                        <!--begin::Chart-->
+                                        <table class="table table-separate table-head-custom table-foot-custom table-checkable" id="kt_datatable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Categoria</th>
+                                                    <th>Solicitudes</th>
+                                                    <th>Monto</th>
+                                                    <th>Pendiente de Pago</th>
+                                                </tr>
+                                            </thead>
+                                            <ng-container *ngIf="load_data">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-center" colspan="7">
+                                                            <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+                                                                <span class="sr-only">Cargando...</span>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </ng-container>
+                                            <ng-container *ngIf="!load_data">
+                                                <tbody *ngIf="categoria_gastos.length >= 1">
+                                                    <tr *ngFor="let item of categoria_gastos">
+                                                        <td>
+                                                           <a style="cursor: pointer;" (click)="listarDetalles(item._id)">{{item._id}}</a> 
+                                                        </td>
+                                                        <td class="text-center">{{item.cantidadGastos}}</td>
+                                                        <td>{{item.montoTotal|currency:'Q'}}</td>
+                                                        <td class="text-center">{{item.saldoTotal|currency:'Q'}}</td>                                                        
+                                                    </tr>                                       
+                                                </tbody>
+                                                <tbody *ngIf="categoria_gastos.length == 0">
+                                                    <tr>
+                                                        <td class="text-center" colspan="4">
+                                                            <p class="text-muted">No hay ningun registro que mostrar !!!</p>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </ng-container>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>Categoria</th>
+                                                    <th>Solicitudes</th>
+                                                    <th>{{totalgastos|currency:'Q'}}</th>
+                                                    <th>Pendite de Pago</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                        <!--end::Chart-->
+                                    </div>
+                                </div>
+                                <!--end::Card-->
+                            </div>                           
+
+                            <div class="col-lg-6">
+                                <!--begin::Card-->
+                                <div class="card card-custom card-stretch gutter-b">
+                                    <div class="card-header">
+                                        <div class="card-title">
+                                            <h3 class="card-label">Listado de Pagos Recibidos</h3>
+                                        </div>
+                                    </div>
+                                    <div class="card-body" id="content_chart_1">
+                                        <!--begin::Chart-->
+                                        <table class="table table-separate table-head-custom table-foot-custom table-checkable" id="kt_datatable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Tipo</th>
+                                                    <th>Fecha</th>
+                                                    <th>Monto</th>
+                                                    <th>Saldo</th>
+                                                    <th>Factura</th>
+                                                </tr>
+                                            </thead>
+                                            <ng-container *ngIf="load_pagos">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-center" colspan="7">
+                                                            <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+                                                                <span class="sr-only">Cargando...</span>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </ng-container>
+                                            <ng-container *ngIf="!load_pagos">
+                                                <tbody *ngIf="pagos_proyecto.length >= 1">
+                                                    <tr *ngFor="let item of pagos_proyecto; let i = index">
+                                                        <td>{{item.venta.tipo}}</td>
+                                                        <td>{{item.fecha|date:'dd/MM/yyyy'}}</td>
+                                                        <td>{{item.monto|currency:'Q'}}</td>
+                                                        <td>{{calcularSaldo(i)|currency:'Q'}}</td>  
+                                                        <td style="text-align: center;"><a style="cursor: pointer;" (click)="abrirPDF(item.venta.archivoPDF)" >
+                                                            <i class="icon-1.5x text-dark-50 flaticon2-paper"></i>
+                                                            </a> 
+                                                        </td>                                                      
+                                                    </tr>                                       
+                                                </tbody>
+                                                <tbody *ngIf="pagos_proyecto.length == 0">
+                                                    <tr>
+                                                        <td class="text-center" colspan="4">
+                                                            <p class="text-muted">No hay ningun registro que mostrar !!!</p>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </ng-container>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>Tipo</th>
+                                                    <th>Fecha</th>
+                                                    <th>{{totalingresos|currency:'Q'}}</th>
+                                                    <th>Saldo</th>
+                                                    <th>Factura</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                        <!--end::Chart-->
+                                    </div>
+                                </div>
+                                <!--end::Card-->
+                            </div>  
+
+                            <div class="col-lg-6">
+                                <!--begin::Card-->
+                                <div class="card card-custom card-stretch gutter-b">
+                                    <div class="card-header">
+                                        <div class="card-title">
+                                            <h3 class="card-label">Listado de Gastos de Categoría</h3>
+                                        </div>
+                                    </div>
+                                    <div class="card-body" id="content_chart_1">
+                                        <!--begin::Chart-->
+                                        <table class="table table-separate table-head-custom table-foot-custom table-checkable" id="kt_datatable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Proveedor</th>
+                                                    <th>Fecha</th>
+                                                    <th>Monto</th>
+                                                    <th>Saldo</th>
+                                                </tr>
+                                            </thead>
+                                            <ng-container *ngIf="load_listado">                                                
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-center" colspan="4">
+                                                            <p class="text-muted">Seleccione una categoria para mostrar el detalle</p>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </ng-container>
+                                            <ng-container *ngIf="!load_listado">
+                                                <tbody *ngIf="listado_gastos.length >= 1">
+                                                    <tr *ngFor="let item of listado_gastos">
+                                                        <td>{{item.proveedor}}</td>
+                                                        <td>{{item.fecha|date:'dd/MM/yyyy'}}</td>
+                                                        <td>{{item.monto|currency:'Q'}}</td>
+                                                        <td>{{item.saldo|currency:'Q'}}</td>                                                        
+                                                    </tr>                                       
+                                                </tbody>
+                                            </ng-container>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>Proveedor</th>
+                                                    <th>Fecha</th>
+                                                    <th>Monto</th>
+                                                    <th>Saldo</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                        <!--end::Chart-->
+                                    </div>
+                                </div>
+                                <!--end::Card-->
+                            </div>  
+                        </div>
+                        <!--end::Card-->
+                    </div>
+                    <!--end::Container-->
+                </div>
+                <!--end::Entry-->
+            </div>
+            <!--end::Content-->
+        </div>
+    </div>
+</div>

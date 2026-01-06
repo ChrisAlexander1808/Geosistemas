@@ -1,0 +1,33 @@
+{
+    "categorias":[
+        {
+            "titulo":"Unidades",
+            "id":"1"
+        },
+        {
+            "titulo":"Pares",
+            "id":"2"
+        },
+        {
+            "titulo":"Piezas",
+            "id":"3"
+        },
+        {
+            "titulo":"Metros",
+            "id":"4"
+        },
+        {
+            "titulo":"Litros",
+            "id":"5"
+        },
+        {
+            "titulo":"Galones",
+            "id":"6"
+        },
+        {
+            "titulo":"Toneles",
+            "id":"7"
+        }
+    ],
+    "ganancia_producto": 0
+}

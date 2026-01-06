@@ -1,0 +1,337 @@
+<div class="d-flex flex-column flex-root">
+    <div class="d-flex flex-row flex-column-fluid page">
+        <app-sidebar></app-sidebar>
+        <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+            <app-top></app-top>
+            <!--begin::Content-->
+            <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+                <!--begin::Subheader-->
+                <div class="subheader py-2 py-lg-4 subheader-solid" id="kt_subheader">
+                    <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+                        <!--begin::Info-->
+                        <div class="d-flex align-items-center flex-wrap mr-2">
+                            <!--begin::Page Title-->
+                            <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Dashboard</h5>
+                            <!--end::Page Title-->
+                            <!--begin::Actions-->
+                            <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-4 bg-gray-200"></div>
+                            <span class="text-muted font-weight-bold mr-4">#XRS-45670</span>
+                            <a href="#" class="btn btn-light-warning font-weight-bolder btn-sm">Add New</a>
+                            <!--end::Actions-->
+                        </div>
+                        <!--end::Info-->
+                        
+                    </div>
+                </div>
+                <!--end::Subheader-->
+                <!--begin::Entry-->
+                <div class="d-flex flex-column-fluid">
+                    <!--begin::Container-->
+                    <div class="container">
+                        <div class="card card-custom mb-7">
+                            <div class="card-header flex-wrap border-0 pt-6 pb-0">
+                                <div class="card-title">
+                                    <h3 class="card-label">Ventas
+                                    <span class="text-muted pt-2 font-size-sm d-block">Seleccione el rago fechas para realizar la busqueda de las ventas</span></h3>
+                                </div>
+                                <div class="card-toolbar">
+                                    <!--
+                                        <a class="btn btn-light-danger btn-sm font-weight-bold font-size-sm mr-3" style="cursor: pointer;">
+                                        <i class="flaticon-computer"></i> &nbsp; Encuesta
+                                    </a>
+                                    --> 
+            
+                                    <a style="cursor: pointer;" (click)="downloadExcel()" class="btn btn-light-success btn-sm font-weight-bold font-size-sm mr-3">
+                                        <i class="flaticon-doc"></i>
+                                        Exportar
+                                    </a>
+                                    <!-- <button class="btn btn-light-success btn-sm font-weight-bold font-size-sm mr-3" type="button" disabled>
+                                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                        Preparando...
+                                    </button> -->
+                                    <a [routerLink]="['/ventas/cuentasporcobrar']" class="btn btn-light-warning btn-sm font-weight-bolder font-size-sm mr-3">
+                                        <span class="svg-icon svg-icon-md"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Files/Downloads-folder.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <rect x="0" y="0" width="24" height="24"/>
+                                                <path d="M3.5,21 L20.5,21 C21.3284271,21 22,20.3284271 22,19.5 L22,8.5 C22,7.67157288 21.3284271,7 20.5,7 L10,7 L7.43933983,4.43933983 C7.15803526,4.15803526 6.77650439,4 6.37867966,4 L3.5,4 C2.67157288,4 2,4.67157288 2,5.5 L2,19.5 C2,20.3284271 2.67157288,21 3.5,21 Z" fill="#000000" opacity="0.3"/>
+                                                <path d="M14.8875071,12.8306874 L12.9310336,12.8306874 L12.9310336,10.8230161 C12.9310336,10.5468737 12.707176,10.3230161 12.4310336,10.3230161 L11.4077349,10.3230161 C11.1315925,10.3230161 10.9077349,10.5468737 10.9077349,10.8230161 L10.9077349,12.8306874 L8.9512614,12.8306874 C8.67511903,12.8306874 8.4512614,13.054545 8.4512614,13.3306874 C8.4512614,13.448999 8.49321518,13.5634776 8.56966458,13.6537723 L11.5377874,17.1594334 C11.7162223,17.3701835 12.0317191,17.3963802 12.2424692,17.2179453 C12.2635563,17.2000915 12.2831273,17.1805206 12.3009811,17.1594334 L15.2691039,13.6537723 C15.4475388,13.4430222 15.4213421,13.1275254 15.210592,12.9490905 C15.1202973,12.8726411 15.0058187,12.8306874 14.8875071,12.8306874 Z" fill="#000000"/>
+                                            </g>
+                                        </svg><!--end::Svg Icon--></span>
+                                        Pendientes
+                                    </a>
+            
+                                    <a [routerLink]="['/ventas/create']" class="btn btn-light-info btn-sm font-weight-bold font-size-sm">
+                                        <i class="flaticon-add-circular-button"></i>
+                                        Nueva venta
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <!--begin: Search Form-->
+                                <!--begin::Search Form-->
+                                <div class="">
+                                    <div class="row align-items-center">
+                                        <div class="col-lg-12 col-xl-12">
+                                            <div class="row mb-5">
+                                                
+                                                <div class="col-md-2 col-sm-6 my-2 my-md-0">
+                                                    <label class="mr-3 mb-0 d-none d-md-block">Fecha inicio</label>
+                                                    <input type="date" class="form-control" name="inicio" [(ngModel)]="inicio">                                                    
+                                                </div>
+                                                <div class="col-md-2 col-sm-6 my-2 my-md-0">                                                    
+                                                    <label class="mr-3 mb-0 d-none d-md-block">Fecha fin</label>
+                                                    <input type="date" class="form-control" name="hasta" [(ngModel)]="hasta">
+                                                   
+                                                </div>
+                                                <div class="col-md-4 my-2 my-md-0">                                                    
+                                                    <label class="mr-3 mb-0 d-none d-md-block">Cliente</label>
+                                                    <select class="form-control selectpicker" data-size="7" data-live-search="true" name="cliente" [(ngModel)]="cliente">
+                                                        <option value="" selected disabled>Seleccionar</option>
+                                                        <option value="Todos">Todos</option>
+                                                        <option value="{{item._id}}" *ngFor="let item of clientes">{{item.razonsocial}}</option>  
+                                                    </select>                                                                                                       
+                                                </div>                                        
+                                                <div class="col-md-3 my-2 my-md-0"> 
+                                                    <label class="mr-3 mb-0 d-none d-md-block text-white">*</label>                                           
+                                                    <a style="cursor: pointer;" class="btn btn-light-primary px-6 font-weight-bold" (click)="filtrar()">
+                                                       <i class="flaticon-search"></i> Buscar
+                                                    </a>
+                                                    <!-- <button type="button" class="btn btn-light-primary spinner spinner-white spinner-left">
+                                                        Buscando
+                                                    </button> -->
+                                                </div>
+                                            </div>                                            
+                                        </div>
+                                        
+                                        <!-- <div class="col-lg-3 col-xl-4 mt-5 mt-lg-0">
+                                            
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card card-custom">
+                            <!--begin::Header-->
+                            <div class="card-header border-0 py-5">
+                                <h3 class="card-title align-items-start flex-column">
+                                    <span class="card-label font-weight-bolder text-dark">Ventas</span>
+                                    <span class="text-muted mt-3 font-weight-bold font-size-sm">Listado de Ventas</span>
+                                </h3>
+                                <div class="card-toolbar">
+                                    <button data-toggle="modal" [attr.data-target]="'#filtroAdvanced'" class="btn btn-light-warning px-6 font-weight-bold">
+                                        <i class="flaticon2-console"></i> Avanzado
+                                     </button>
+                                </div>
+                            </div>
+                            <!--end::Header-->
+                            <!--begin::Body-->
+                            <div class="card-body pt-0 pb-7">
+                                <!--begin::Table-->
+                                <ng-container *ngIf="ventas.length == 0">
+                                    <div class="col-12 text-center">
+                                        <img src="assets/images/search.png" alt="" style="width: 80px;">
+                                        <h1 class="font-weight-bolder text-dark mt-5">Resultado de Ventas</h1>
+                                        <div class="font-size-h4 mb-8">No se encontraron ventas que mostrar</div>
+                                    </div>
+                                </ng-container>
+
+                                <div class="table-responsive" *ngIf="ventas.length >=1">
+                                    <table class="table table-head-custom table-vertical-center" id="kt_advance_table_widget_3">
+                                        <thead>
+                                            <tr class="text-left text-uppercase">
+                                                <th style="min-width: 100px">No. Venta</th>
+                                                <th style="min-width: 170px">Cliente</th>
+                                                <th style="min-width: 120px">Fecha de Venta</th>
+                                                <th style="min-width: 100px">Monto</th>
+                                                <th style="min-width: 100px">Estado</th>
+                                                <th style="min-width: 100px">Factura</th>
+                                                <th style="min-width: 100px">Fecha de Factura</th>
+                                                <th style="min-width: 100px">Saldo</th>
+                                                <th class="pr-0" style="min-width: 50px">Acción</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of ventas | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize"> 
+                                                <td class="pl-0">                                                    
+                                                    <span class="text-muted font-weight-bold text-muted d-block">{{item.correlativo|fzill:7}}</span>
+                                                </td>                                              
+                                                <td class="pl-0">
+                                                    <a target="_blank" [routerLink]="['/ventas/rendimiento/'+item._id+'']" class="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">
+                                                        {{item.cliente}}
+                                                    </a>
+                                                    <span class="text-muted font-weight-bold text-muted d-block">{{item.nit}}</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
+                                                        {{item.createdAt|date:'dd/MM/yyyy':'UTC'}}
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{item.monto|currency:'Q'}}</span>                                                    
+                                                </td>
+                                                <td>
+                                                    <span class="badge badge-warning mb-3 mr-3" *ngIf="item.estado == 'Procesando'">Procesando</span>
+                                                    <span class="badge badge-danger mb-3 mr-3" *ngIf="item.estado == 'Cancelado'">Cancelado</span>
+                                                </td>
+                                                <td>
+                                                    <span class="badge badge-success mb-3 mr-3" *ngIf="item.factura">{{item.factura}}</span> 
+                                                    <span class="badge badge-danger mb-3 mr-3" *ngIf="!item.factura">No facturado</span>                                                 
+                                                </td>
+                                                <td>
+                                                    <span class="text-dark-75 font-weight-bolder d-block font-size-lg" *ngIf="item.fechafactura">{{item.fechafactura|date:'dd/MM/yyyy':'UTC'}}</span>  
+                                                    <span class="text-dark-75 font-weight-bolder d-block font-size-lg" *ngIf="!item.fechafactura">N/A</span>                                               
+                                                </td>
+                                                <td>
+                                                    <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{item.saldo|currency:'Q'}}</span>                                                    
+                                                </td>
+                                                <td class="pr-0">
+                                                    <div class="btn-group" role="group">
+                                                        <button id="btnGroupDrop1" type="button" class="btn btn-dark font-weight-bold btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="flaticon-settings"></i>
+                                                        </button>
+                                                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                                            <a [routerLink]="['/ventas/pagos',item._id]" class="dropdown-item">
+                                                                <i class="icon-1x text-dark-50 flaticon-piggy-bank"></i>&nbsp; Pagos
+                                                            </a>
+                                                            <a *ngIf="item.saldo == item.monto" style="cursor: pointer;" [routerLink]="['/ventas/edit',item._id]" class="dropdown-item">
+                                                                <i class="icon-1x text-dark-50 flaticon-edit"></i> &nbsp; Editar
+                                                            </a>
+                                                            <a *ngIf="item.saldo != item.monto" style="cursor: not-allowed;" disabled class="dropdown-item">
+                                                                <i class="icon-1x text-dark-50 flaticon-edit"></i> &nbsp; Editar
+                                                            </a>
+                                                            <a style="cursor: pointer;"  class="dropdown-item" (click)="openEditModal(item._id)">
+                                                                <i class="icon-1x text-dark-50 flaticon2-paper"></i> &nbsp; Imprimir
+                                                            </a>  
+                                                        </div>                                                        
+                                                    </div>                                                           
+                                                </td>                                                
+                                            </tr>                                           
+                                        </tbody>
+                                    </table>
+                                </div>  
+                            </div>
+                            <div class="card-footer">
+                                <div class="d-flex justify-content-between align-items-center flex-wrap">
+                                    <div class="d-flex flex-wrap mr-3">                                       
+                                            <ngb-pagination
+                                            [collectionSize]="ventas.length"
+                                            [pageSize]="pageSize"
+                                            [(page)]="page"
+                                            [maxSize]="10"
+                                            [rotate]="true"
+                                        ></ngb-pagination>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end::Body-->
+                        </div>
+                        <div class="modal fade" id="exampleModalLabel" tabindex="-1" aria-labelledby="exampleModalLabel" style="display: none;" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Impresión de Venta</font></font></h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Cerca">
+                                                    <i aria-hidden="true" class="ki ki-close"></i>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body" id="contenedorticket-">
+                                                ------------------------------------------------------------------------------------------<br>
+
+                                                <div style="width: 500px;display: flex; justify-content: center">
+                                                    {{imprimirventa.empresa}}<br>
+                                                </div>
+                                                ------------------------------------------------------------------------------------------<br>
+                                                <div style="width: 500px;display: flex; justify-content: center">
+                                                        <span *ngIf="imprimirventa.empresa == 'AUTO REPUESTOS RAMIREZ'">NIT: 8449782-3</span>
+                                                        <span *ngIf="imprimirventa.empresa == 'SERVIREPUESTOS MILENIUM'">NIT: 36171192</span>
+                                                        <span *ngIf="imprimirventa.empresa == 'AUTO REPUESTOS JENCAR'">NIT: 118618849</span>                                                    
+                                                </div>
+                                                <div style="width: 500px;display: flex; justify-content: center">
+                                                        <span *ngIf="imprimirventa.empresa == 'AUTO REPUESTOS RAMIREZ'">Correo: ventas.respuestosramirez@hotmail.com</span>
+                                                        <span *ngIf="imprimirventa.empresa == 'SERVIREPUESTOS MILENIUM'">Correo: Luiscayito1981@gmail.com</span>
+                                                        <span *ngIf="imprimirventa.empresa == 'AUTO REPUESTOS JENCAR'">Correo: Fabiolamacarioargueta@gmail.com</span>
+                                                </div>
+                                                <div style="width: 500px;display: flex; justify-content: center">
+                                                    Zona 5 Cuidad Guatemala
+                                                </div>
+                                                    
+                                                ------------------------------------------------------------------------------------------<br>
+                                                <ng-container>
+                                                <b>Cliente</b>: {{imprimirventa.cliente?.nombrecomercial}}<br>
+                                                <b>Correo</b>: {{imprimirventa.cliente?.email}}<br>
+                                                <b>NIT</b>: {{imprimirventa.cliente?.nit}}<br>
+                                                <b>Telefono</b>: {{imprimirventa.cliente?.telefono}}<br>
+                                                
+                                                ------------------------------------------------------------------------------------------<br>
+                                                
+                                                <b>Correlativo</b>: {{imprimirventa.correlativo|fzill:7}}<br>
+                                                <b>Fecha</b>: {{imprimirventa.createdAt|date:'dd/MM/yyyy'}}<br>
+                                                <b>Vehículo</b>: {{imprimirventa.vehiculo}}<br>
+                                                </ng-container>
+                                                
+                                                
+                                                ------------------------------------------------------------------------------------------<br>
+                                                
+                                                <div style="width: 500px">
+                                                    <span style="display: flex; justify-content: space-between">
+                                                        <span style="width: 10%"><b>Qtd</b></span>
+                                                        <span style="width: 45%"><b>Concepto</b></span> 
+                                                        <span style="width: 20%"><b>Precio</b></span> 
+                                                        <span style="width: 25%"><b>Subtotal</b></span>
+                                                    </span>
+                                                </div>
+                                                
+                                                =====================================================<br>
+                                                
+                                                <div style="width: 500px" *ngFor="let item of imprimirdetalle">
+                                                    <span style="display: flex; justify-content: space-between">
+                                                    <span style="width: 10%">{{item.cantidad}}</span>
+                                                    <span style="width: 45%">
+                                                            <ng-container >
+                                                                {{item.titulo}} {{item.titulo_v}}
+                                                            </ng-container> 
+                                                            
+                                                    </span> 
+                                                    <span style="width: 20%">
+                                                        {{item.precio|currency:'Q'}}
+                                                    </span>
+                                                    <span style="width: 25%">{{item.precio*item.cantidad|currency:'Q'}}</span>
+                                                    </span>
+                                                </div>
+                                                
+                                                =====================================================<br>
+                                                
+                                                <div style="width: 500px">
+                                                    <span style="display: flex; justify-content: space-between">
+                                                
+                                                    <span style="width: 75%">
+                                                        TOTAL
+                                                    </span> 
+                                                    <span style="width: 25%">{{imprimirventa.monto|currency:'Q'}}</span>
+                                                    </span>
+                                                </div>
+                                                ------------------------------------------------------------------------------------------<br>
+                                                
+                                                <div style="width: 500px;display: flex; justify-content: center">
+                                                    <b>Este no es un documento contable.</b> <br>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cerrar</font></font></button>
+                                                <button type="button" class="btn btn-primary font-weight-bold" (click)="imprimir_ticket()"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Imprimir</font></font></button>
+                                            </div>
+                                    </div>                                                                                    
+                            </div>                                                                                
+                        </div>                  
+                        
+                    </div>
+                    <!--end::Container-->
+                </div>
+                <!--end::Entry-->
+            </div>
+            <!--end::Content-->
+        </div>
+    </div>
+</div>
